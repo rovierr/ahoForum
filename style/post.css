@@ -1,0 +1,120 @@
+main {
+	height: 50vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+section {
+	width: 700px;
+	max-width: 1200px;
+	margin: 0 auto;
+	background-color: var(--header-color);
+	padding: 20px;
+	border-radius: var(--card-radius-default);
+}
+
+section > h1 {
+	margin-bottom: 24px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+    gap: 0.5rem;
+}
+
+form label {
+	font-size: var(--fsize-md);
+}
+
+form input {
+	width: 50%;
+    font-size: var(--fsize-sm);
+	border-radius: var(--input-radius-default);
+	padding: 6px;
+	margin-bottom: 12px;
+	background-color: var(--color-background-button-secondary-transparent);
+	color: var(--secondary);
+}
+
+form input:focus {
+	outline: 2px solid var(--color-background-button-primary);
+}
+
+form textarea {
+  	width: 100%;
+  	margin: 0 auto;
+	margin-bottom: 20px;
+  	padding: 6px;
+  	font-size: var(--fsize-sm);
+  	border-radius: var(--input-radius-default);
+  	background-color: var(--color-background-button-secondary-transparent);
+  	color: var(--secondary);
+	border: 2px solid transparent;
+  	resize: none;
+ 	outline: none;
+	transition: border-color 0.2s ease;
+}
+
+form textarea:focus {
+	border-color: var(--color-background-button-primary);
+}
+
+form button {
+	width: 50%;
+	margin: auto;
+	font-weight: 600;
+	font-size: var(--fsize);
+	padding: 4px;
+	border-radius: var(--button-radius-default);
+	cursor: pointer;
+	background-color: var(--color-background-button-secondary);
+	font-family: var(--ffamily);
+	color: var(--secondary);
+	opacity: 1;
+	margin-bottom: 12px;
+    transition: background 0.2s ease;
+}
+
+form button:hover {
+	background-color: var(--color-background-button-secondary-hover);
+}
+
+.flash-message {
+	position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: var(--fsize-sm);
+    z-index: 1000;
+    background-color: var(--color-background-button-primary);
+    color: var(--secondary);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    animation: fadeOut 4s ease forwards;
+        
+	display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flash-message.error {
+	color: var(--error-color);
+    background-color: var(--error-bg-color);
+}
+
+.flash-message.success {
+	color: var(--succsess-color);
+    background-color: var(--success-bg-color);
+}
+
+
+/* Animations */
+@keyframes fadeOut {
+    0% { opacity: 0; }
+	20% { opacity: 1;}
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}

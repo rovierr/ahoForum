@@ -1,0 +1,26 @@
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+main svg {
+	margin-bottom: 30px;
+	color: var(--error-color-transparent);
+}
+
+main a {
+	margin-top: 30px;
+	padding: 10px;
+	background-color: var(--color-background-button-secondary);
+	border-radius: var(--button-radius-default);
+	color: var(--secondary);
+	transition: transform 0.2s ease-in, background-color 0.2s ease-in;
+}
+
+main a:hover {
+	transform: translateY(-2px);
+    background-color: var(--color-background-button-secondary-hover);
+}

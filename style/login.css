@@ -1,0 +1,91 @@
+body {
+    min-height: 100vh;
+	display: flex;
+    justify-content: center;
+	align-items: center;
+    flex-direction: column;
+}
+
+main {
+	background-color: var(--header-color);
+    padding: 20px;
+	border-radius: var(--card-radius-default);
+    width: 30%;
+}
+
+main > h2 {
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+main > form > * {
+	width: 100%
+}
+
+
+main > form label {
+	font-weight: 700;
+	margin-bottom: 6px;	
+}
+
+main > form input {
+    font-size: var(--fsize-sm);
+	border-radius: var(--input-radius-default);
+	padding: 8px;
+	margin-bottom: 24px;
+	background-color: var(--color-background-button-secondary-transparent);
+	color: var(--secondary);
+}
+
+main > form input:focus {
+	outline: 4px solid var(--color-background-button-primary);
+}
+
+main > form {
+	display: flex;
+	flex-direction: column;
+}
+
+#login-btn, .register {
+	font-weight: 600;
+	font-size: var(--fsize);
+	padding: 8px;
+	border-radius: var(--button-radius-default);
+	cursor: pointer;
+}
+
+#login-btn {
+	background-color: var(--color-background-button-primary);
+	font-family: var(--ffamily);
+	color: var(--secondary);
+	opacity: 1;
+	margin-bottom: 12px;
+    transition: background 0.2s ease;
+}
+
+#login-btn:hover:not(:disabled) {
+	background-color: var(--color-background-button-primary-hover);
+}
+
+#login-btn:disabled {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+
+.register {
+    display: block;
+	width: 100%;
+    text-align: center;
+    background-color: none;
+	color: var(--color-background-button-primary);
+	transition: all 0.2s ease;
+}
+
+.register:hover {
+	background-color: var(--color-background-button-secondary);
+	color: var(--secondary);
+}
+
+#toggle-theme-btn {
+	margin-top: 0;
+} 

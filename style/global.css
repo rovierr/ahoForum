@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+	text-decoration: none;
+	border: none;
+}
+
+:root {
+	--bg-color: #151219;
+	--post-bg-color: #433f4b;
+    --header-color: #221e29;
+    --accent-color: #4251b6;
+    --accent-color-transparent: rgba(66, 81, 182, 0.5);
+	--accent-color-transparent-hover: rgba(66, 81, 182, 0.8);
+    --secondary: #f4f6f8;
+	--secondary-transparent: rgba(244, 246, 248, 0.7);
+    --focuscolor: #2d325a;
+	--button-radius-default: 16px;
+    --card-radius-default: 16px;
+	--input-radius-default: 4px;
+	--input-radius-md: 8px;
+    --info-radius-default: 6px;
+    --color-background-button-primary: #5e6bc1;
+    --color-background-button-secondary: #384373;
+    --color-background-button-primary-hover: #4251b6;
+    --color-background-button-secondary-hover: #2d325a;
+    --color-background-button-secondary-transparent: rgba(94, 107, 193, 0.4);
+	--error-color: #c0392b;
+	--error-color-transparent: rgba(192, 57, 43, 0.8);
+	--error-bg-color: rgba(192, 57, 43, 0.1);
+	--success-color: #388e3c;
+	--success-bg-color: rgba(129, 199, 132, 0.24);
+    --ffamily: "Roboto", Arial, sans-serif;
+	--fsize-lg: 20px;
+    --fsize-md: 18px;
+    --fsize: 16px;
+    --fsize-sm: 14px;
+    --tag-novato-color: #4CAF50;
+  	--tag-amador-color: #673AB7;
+  	--tag-intermediario-color: #FFB300;
+  	--tag-advanced-color: #F44336;
+  	--tag-veterano-color: #3F51B5;
+}
+
+.light {
+  	--bg-color: #ffffff;
+	--post-bg-color: #f1ebfa;
+  	--header-color: #f0f0f0;
+  	--accent-color: #4251b6;
+  	--accent-color-transparent: rgba(66, 81, 182, 0.3);
+  	--secondary: #151219;
+  	--secondary-transparent: rgba(21, 18, 25, 0.7);
+  	--focuscolor: #e0e0e0;
+  	--color-background-button-primary: #5e6bc1;
+  	--color-background-button-secondary: #d1d1d1;
+  	--color-background-button-primary-hover: #4251b6;
+  	--color-background-button-secondary-hover: #b0b0b0;
+  	--color-background-button-secondary-transparent: rgba(94, 107, 193, 0.08);
+  	--error-color: #b71c1c;
+	--error-color-transparent: rgba(183, 28, 28, 0.8);
+  	--error-bg-color: rgba(183, 28, 28, 0.08);
+	--success-color: #2e7d32;
+	--success-bg-color: rgba(76, 175, 80, 0.08);
+	--tag-novato-color: #388E3C;
+  	--tag-amador-color: #5E35B1;
+  	--tag-intermediario-color: #FFA000;
+  	--tag-advanced-color: #D32F2F;
+  	--tag-veterano-color: #303F9F;
+}
+
+body {
+	font-family: var(--ffamily);
+    font-size: var(--fsize);
+    background-color: var(--bg-color);
+    color: var(--secondary);
+}
+
+
+header {
+	background-color: var(--header-color);
+	padding: 17px;
+}
+
+nav ul {
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
+  	padding: 0;
+  	margin: 0;
+  	list-style: none;
+}
+
+nav ul li a {
+	color: var(--secondary);
+}
+
+.nav-left,
+.nav-right {
+  	display: flex;
+  	align-items: center;
+  	gap: 1rem;
+}
+
+.nav-left li,
+.nav-right li {
+  	display: flex;
+  	align-items: center;
+	transition: transform 0.2s ease-in;
+}
+
+.nav-left li:hover {
+	transform: translateY(-2px);
+}
+
+
+.user-info {
+  	display: flex;
+  	align-items: center;
+  	gap: 0.5rem;
+}
+
+.logout-btn {
+  	color: var(--secondary);
+  	text-decoration: none;
+  	font-weight: 600;
+}
+
+.logout-btn:hover {
+  	text-decoration: underline;
+}
+
+.pfp-sm {
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	cursor: pointer;
+	border: 2px var(--secondary) solid;
+}
+
+.focus-page {
+    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: var(--focus-color);
+    border-radius: 7px;
+}
+
+.user-info {
+    margin-left: auto;
+    color: #fff;
+}
+
+#toggle-theme-btn {
+    position: absolute;
+    top: 20px;
+    right: 220px;
+
+	background-color: transparent;
+	color: var(--secondary);
+	cursor: pointer;
+	margin-top: 0.6rem;
+}
+
+#toggle-theme-btn.corner-right {
+	right: 20px;
+}
+
+
+.tag {
+  	font-weight: 600;
+  	font-size: 0.85rem;
+  	padding: 2px 8px;
+  	border-radius: 6px;
+  	display: inline-block;
+  	letter-spacing: 0.5px;
+}
+
+.tag-novato {
+	color: var(--tag-novato-color);
+}
+
+.tag-amador {
+  	color: var(--tag-amador-color);
+}
+
+.tag-intermediario {
+  	color: var(--tag-intermediario-color);
+}
+
+.tag-advanced {
+  	color: var(--tag-advanced-color);
+}
+
+.tag-veterano {
+  	color: var(--tag-veterano-color);
+}
+
+main > .error-msg {
+    color: var(--error-color);
+	background-color: var(--error-bg-color);
+	padding: 8px;
+	margin-bottom: 15px;
+	border-radius: var(--info-radius-default);
+}
+
+.uppercase {
+  	text-transform: uppercase;
+}
