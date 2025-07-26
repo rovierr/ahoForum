@@ -22,13 +22,13 @@ if (!$tipo_voto || ($id_topico === null && $id_resposta === null)) {
     exit();
 }
 
-// Obter autor do conteúdo
+// obter autor do conteúdo
 if ($id_topico !== null) {
     $sql_autor = "SELECT id_usuario FROM topicos WHERE id = ?";
     $stmt_autor = $conn->prepare($sql_autor);
     $stmt_autor->bind_param("i", $id_topico);
 } else {
-    $sql_autor = "SELECT id_usuario FROM comentarios WHERE id = ?"; // Ajustado para 'comentarios' em vez de 'respostas'
+    $sql_autor = "SELECT id_usuario FROM comentarios WHERE id = ?"; // ajustado para 'comentarios' em vez de 'respostas'
     $stmt_autor = $conn->prepare($sql_autor);
     $stmt_autor->bind_param("i", $id_resposta);
 }
@@ -37,12 +37,12 @@ $result_autor = $stmt_autor->get_result();
 $autor = $result_autor->fetch_assoc();
 $id_autor = $autor['id_usuario'] ?? null;
 
-if (!$id_autor || $id_autor == $usuario_id) { // Impede votação no próprio conteúdo
+if (!$id_autor || $id_autor == $usuario_id) { // impede votação no próprio conteúdo
     header("Location: home.php");
     exit();
 }
 
-// Verifica se já existe voto
+// verifica se já existe voto
 $sql = "SELECT id, tipo FROM votos WHERE id_usuario = ? AND " .
        ($id_topico !== null ? "id_topico = ? AND id_resposta IS NULL" : "id_resposta = ?");
 $stmt = $conn->prepare($sql);
@@ -58,28 +58,28 @@ $voto = $result->fetch_assoc();
 $reputacao_alteracao = 0;
 
 if ($tipo_voto === 'remover' && $voto) {
-    // Remover o voto
+    // remover o voto
     $sql_delete = "DELETE FROM votos WHERE id = ?";
     $stmt_delete = $conn->prepare($sql_delete);
     $stmt_delete->bind_param("i", $voto['id']);
     $stmt_delete->execute();
 
-    // Ajustar reputação com base no voto removido
+    // ajustar reputação com base no voto removido
     $reputacao_alteracao = ($voto['tipo'] === 'positivo') ? -1 : 1;
 } elseif ($voto) {
     if ($voto['tipo'] !== $tipo_voto) {
-        // Atualizar voto (de like para dislike ou vice-versa)
+        // atualizar voto (de like para dislike ou vice-versa)
         $sql_update = "UPDATE votos SET tipo = ? WHERE id = ?";
         $stmt_update = $conn->prepare($sql_update);
         $stmt_update->bind_param("si", $tipo_voto, $voto['id']);
         $stmt_update->execute();
 
-        // Ajustar reputação: +2 para mudança de dislike para like, -2 para mudança de like para dislike
+        // ajustar reputação: +2 para mudança de dislike para like, -2 para mudança de like para dislike
         $reputacao_alteracao = ($tipo_voto === 'positivo') ? 2 : -2;
     }
-    // Se o voto é o mesmo, nada é feito (mantém o voto atual)
+    // se o voto é o mesmo, nada é feito (mantém o voto atual)
 } else {
-    // Novo voto
+    // novo voto
     $sql_insert = "INSERT INTO votos (id_usuario, id_topico, id_resposta, tipo) VALUES (?, ?, ?, ?)";
     $stmt_insert = $conn->prepare($sql_insert);
     $id_resposta_nullable = $id_resposta !== null ? $id_resposta : null;
@@ -87,11 +87,11 @@ if ($tipo_voto === 'remover' && $voto) {
     $stmt_insert->bind_param("iiss", $usuario_id, $id_topico_nullable, $id_resposta_nullable, $tipo_voto);
     $stmt_insert->execute();
 
-    // Ajustar reputação: +1 para like, -1 para dislike
+    // ajustar reputação: +1 para like, -1 para dislike
     $reputacao_alteracao = ($tipo_voto === 'positivo') ? 1 : -1;
 }
 
-// Atualiza reputação do autor, se necessário
+// atualiza reputação do autor, se necessário
 if ($reputacao_alteracao != 0) {
     $sql_reputacao = "UPDATE usuarios SET reputacao = reputacao + ? WHERE id = ?";
     $stmt_reputacao = $conn->prepare($sql_reputacao);
